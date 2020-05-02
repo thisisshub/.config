@@ -1,7 +1,6 @@
 #/usr/bin/bash
 
 echo "Updating for the first time"
-echo "==============================================================================="
 # first update
 sudo pacman -Syu
 echo "Update completed"
@@ -23,7 +22,7 @@ echo "yay installed"
 echo "=================================================================================="
 
 echo "Installing nvim"
-yay -S neovim nerd-fonts-meslo
+yay -S polybar rofi neovim nerd-fonts-meslo
 
 echo "Installing oh-my-zsh and Powerlevel10k" 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -40,31 +39,27 @@ sudo /bin/sh -c 'echo "options rtl8723de ant_sel=2" >> /etc/modprobe.d/rtl8723de
 echo "Wifi-driver Installed"
 echo "===================================================================================="
 
-echo "Installing Bspwm Rice\n Uncomment your personal repository git clone at https://github.com/thisisshub/.config.git if needed"
-# change directory to the .config folder
-mkdir ~/.config
-cd ~/.config
-# git clone contents of .config repository
+echo "Installing Bspwm Rice\n"
+cd ~/
 git clone https://github.com/tonijarjour/autorice.git
 cd autorice/
 bash install.sh
-echo "Installing neovimrc"
-cd ~/.config
-git clone https://github.com/thisisshub/.config.git
-cd ~/.config
-mv * ../
-cd ../
-rm -rf .config/
+ 
+echo "Copying polybar fonts to /usr/share/fonts/ "
+# installing polybar fonts
+cd ~/.config/polybar/fonts/
+sudo cp -r *.ttf /usr/share/fonts/
 
 echo "Installing oh-my-zsh and Powerlevel10k"
 # installing ohmyzsh and powerlevel10k 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
-echo "===========================================================================================\n"
-echo '= Set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc. Enter zsh to setup powerlevel10k =\n'
-echo '= Setup your neovim with PlugInstall                                                        =\n'
-echo "= Rice Installation Completed                                                               =\n"
-echo "= Please Reboot now :)                                                                      =\n"
-echo "=============================================================================================\n"
+echo "============================================================================================="
+echo '= Set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc. Enter zsh to setup powerlevel10k ='
+echo '= Setup your neovim with PlugInstall                                                        ='
+echo " add $HOME/.config/polybar/launch.sh to ~/.config/bspwm/bspwmrc                             ="
+echo "= Rice Installation Completed                                                               ="
+echo "= Please Reboot now :)                                                                      ="
+echo "============================================================================================="
 
