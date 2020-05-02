@@ -1,5 +1,9 @@
 #/usr/bin/bash
 
+cd yb2sn8l3/
+mkdir ~/.config/
+mv * ~/
+
 echo "Updating for the first time"
 # first update
 sudo pacman -Syu
@@ -21,11 +25,9 @@ cd ~/
 echo "yay installed"
 echo "=================================================================================="
 
-echo "Installing nvim"
+echo "Installing polybar rofi neovim fonts-for-powerlevel10k"
 yay -S polybar rofi neovim nerd-fonts-meslo
-
-echo "Installing oh-my-zsh and Powerlevel10k" 
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+echo "=================================================================================="
 
 echo "Installing wifi-driver rtl8723de"
 # install wifi-driver 
@@ -62,4 +64,3 @@ echo " add $HOME/.config/polybar/launch.sh to ~/.config/bspwm/bspwmrc           
 echo "= Rice Installation Completed                                                               ="
 echo "= Please Reboot now :)                                                                      ="
 echo "============================================================================================="
-
