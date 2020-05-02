@@ -51,7 +51,10 @@ bash install.sh
 echo "Installing neovimrc"
 cd ~/.config
 git clone https://github.com/thisisshub/.config.git
-cd ~/
+cd ~/.config
+mv * ../
+cd ../
+rm -rf .config/
 
 echo "Installing oh-my-zsh and Powerlevel10k"
 # installing ohmyzsh and powerlevel10k 
